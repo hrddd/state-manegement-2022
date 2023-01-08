@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 import { UserLoginParam } from '../../../../types/resources/User'
+import styles from './index.module.css'
 
 type UserLoginInput = {
   name?: string | undefined
@@ -87,38 +88,46 @@ const LoginForm: FC<Props> = ({ onSubmit }) => {
   }, [myInput])
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(mySubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <label>
-        name: <input {...register('name')} />
-      </label>
-      <label>
-        age: <input {...register('age')} />
-      </label>
-      <label>
-        isDeveloper: <input type='checkbox' {...register('isDeveloper')} />
-      </label>
-      <label>
-        icon: <input type='file' accept='image/*' {...register('icon')} />
-      </label>
-
-      {/* errors will return when field validation fails  */}
-      <div>
-        {errors.name && <span>{errors.name.message}</span>}
-        {errors.age && <span>{errors.age.message}</span>}
-        {errors.icon && <span>{errors.icon.message}</span>}
-      </div>
-      <div>
-        <h3>input: </h3>
-        <code>{JSON.stringify(myInput)}</code>
-      </div>
-      <div>
-        <h3>output: </h3>
-        <code>{JSON.stringify(myOutput)}</code>
-      </div>
-      <input type='submit' />
-    </form>
+    <div className={styles.root}>
+      <form onSubmit={handleSubmit(mySubmit)}>
+        <div className={styles.row}>
+          <label>
+            name: <input {...register('name')} />
+          </label>
+        </div>
+        <div className={styles.row}>
+          <label>
+            age: <input {...register('age')} />
+          </label>
+        </div>
+        <div className={styles.row}>
+          <label>
+            isDeveloper: <input type='checkbox' {...register('isDeveloper')} />
+          </label>
+        </div>
+        <div className={styles.row}>
+          <label>
+            icon: <input type='file' accept='image/*' {...register('icon')} />
+          </label>
+        </div>
+        <div>
+          {errors.name && <span>{errors.name.message}</span>}
+          {errors.age && <span>{errors.age.message}</span>}
+          {errors.icon && <span>{errors.icon.message}</span>}
+        </div>
+        <div className={styles.row}>
+          <h3>input: </h3>
+          <code>{JSON.stringify(myInput)}</code>
+        </div>
+        <div className={styles.row}>
+          <h3>output: </h3>
+          <code>{JSON.stringify(myOutput)}</code>
+        </div>
+        <div className={styles.row}>
+          <button type='submit'>ログイン</button>
+        </div>
+      </form>
+    </div>
   )
 }
 

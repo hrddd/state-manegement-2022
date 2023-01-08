@@ -1,12 +1,13 @@
 import { FC } from 'react'
-import { UserLoginParam } from '../../../../types/resources/User'
-import LoginForm from '../../../presentation/templates/LoginForm'
+import Centering from '../../../layout/Centering'
+import Login from './container'
 
-const Login: FC = () => {
-  const onSubmit = (data: UserLoginParam) => {
-    console.log(data)
-  }
-  return <LoginForm onSubmit={onSubmit} />
+const LoginTemplate: FC = () => {
+  return (
+    <Centering>
+      <Login />
+    </Centering>
+  )
 }
 
-export default Login
+export default LoginTemplate
