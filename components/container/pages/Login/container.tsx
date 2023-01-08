@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { UserLoginParam } from '../../../../types/resources/User'
+import { UserLoginParam } from '../../../../resources/User/type'
 import LoginForm from '../../../presentation/templates/LoginForm'
 
 const Login: FC = () => {

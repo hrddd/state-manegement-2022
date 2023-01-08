@@ -2,7 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FC, useEffect, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
-import { UserLoginParam } from '../../../../types/resources/User'
+import { UserLoginParam } from '../../../../resources/User/type'
+
 import styles from './index.module.css'
 
 type UserLoginInput = {
