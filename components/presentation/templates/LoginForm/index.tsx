@@ -46,7 +46,6 @@ const schema: z.ZodType<UserLoginParam, {}, UserLoginInput> = z
         '.jpg, .jpeg, .png and .webp .svg files are accepted.',
       )
       .transform((files) => {
-        console.log(files)
         return files?.[0]
       }),
   })
