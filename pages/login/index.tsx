@@ -1,6 +1,6 @@
 import { Inter } from '@next/font/google'
 import Head from 'next/head'
-import LoginTemplate from '../../components/container/pages/Login'
+import Login from '../../components/templates/Login'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +13,7 @@ export default function LoginPage() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <LoginTemplate></LoginTemplate>
+      <Login />
     </>
   )
 }

@@ -2,9 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { FC, useEffect, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
-import { UserLoginParam } from '../../../../resources/User/type'
+import { UserLoginParam } from '../../../resources/User/type'
 
-import styles from './index.module.css'
+import styles from './presentation.module.css'
 
 type UserLoginInput = {
   name?: string | undefined
@@ -62,7 +62,7 @@ type Props = {
   onSubmit: (data: UserLoginOutput) => void
 }
 
-const LoginForm: FC<Props> = ({ onSubmit }) => {
+const Presentation: FC<Props> = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -132,4 +132,4 @@ const LoginForm: FC<Props> = ({ onSubmit }) => {
   )
 }
 
-export default LoginForm
+export default Presentation
