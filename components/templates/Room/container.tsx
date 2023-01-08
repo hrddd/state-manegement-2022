@@ -23,6 +23,10 @@ const Container: FC = () => {
           y: 0,
           z: 0,
         },
+        size: {
+          width: 200,
+          height: 200,
+        },
         user: _user1,
         lastUpdate: '2023-01-01T12:00',
       },
@@ -34,6 +38,10 @@ const Container: FC = () => {
           x: 100,
           y: 100,
           z: 1,
+        },
+        size: {
+          width: 200,
+          height: 200,
         },
         user: _user1,
         lastUpdate: '2023-01-01T12:00',

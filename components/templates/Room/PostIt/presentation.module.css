@@ -1,8 +1,38 @@
 .root {
   border: 1px solid rgb(var(--foreground-rgb));
   padding: 16px;
+  border-radius: 16px;
 }
 
-.row:not(:first-child) {
-  margin-top: 16px;
+.root[data-theme-id='0'] {
+  background-color: rgb(255, 255, 200);
+  color: rgb(40, 40, 40);
+}
+
+.root[data-theme-id='1'] {
+  background-color: rgb(200, 255, 200);
+  color: rgb(40, 40, 40);
+}
+
+.root[data-theme-id='2'] {
+  background-color: rgb(255, 200, 255);
+  color: rgb(40, 40, 40);
+}
+
+.colorRadio[data-theme-id='0'] {
+  accent-color: rgb(255, 255, 200);
+}
+
+.colorRadio[data-theme-id='1'] {
+  accent-color: rgb(200, 255, 200);
+}
+
+.colorRadio[data-theme-id='2'] {
+  accent-color: rgb(255, 200, 255);
+}
+
+.textArea {
+  background: transparent;
+  border: none;
+  color: rgb(40, 40, 40);
 }
