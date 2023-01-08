@@ -21,7 +21,7 @@ const Container: FC = () => {
         position: {
           x: 0,
           y: 0,
-          z: 0,
+          z: 1,
         },
         size: {
           width: 200,
@@ -37,7 +37,7 @@ const Container: FC = () => {
         position: {
           x: 100,
           y: 100,
-          z: 1,
+          z: 0,
         },
         size: {
           width: 200,

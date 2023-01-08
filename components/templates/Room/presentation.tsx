@@ -13,10 +13,18 @@ type Props = Room
 const Presentation: FC<Props> = ({ id, postIts, members }) => {
   return (
     <div className={styles.root}>
-      {postIts.map((postit) => {
+      {postIts.map((postIt) => {
         return (
-          <div key={postit.id} className={styles.postItPosition}>
-            <PostIt data={postit} />
+          <div
+            key={postIt.id}
+            className={styles.postItPosition}
+            style={{
+              top: `${postIt.position.x}px`,
+              left: `${postIt.position.y}px`,
+              zIndex: postIt.position.z,
+            }}
+          >
+            <PostIt data={postIt} />
           </div>
         )
       })}
