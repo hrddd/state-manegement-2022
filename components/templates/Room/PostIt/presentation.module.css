@@ -2,6 +2,7 @@
   border: 1px solid rgb(var(--foreground-rgb));
   padding: 16px;
   border-radius: 16px;
+  display: inline-flex;
 }
 
 .root[data-theme-id='0'] {
@@ -19,6 +20,20 @@
   color: rgb(40, 40, 40);
 }
 
+.form {
+  display: contents;
+}
+
+.textArea {
+  background: transparent;
+  border: none;
+  color: rgb(40, 40, 40);
+}
+.colors {
+  display: flex;
+  flex-direction: column;
+}
+
 .colorRadio[data-theme-id='0'] {
   accent-color: rgb(255, 255, 200);
 }
@@ -29,10 +44,4 @@
 
 .colorRadio[data-theme-id='2'] {
   accent-color: rgb(255, 200, 255);
-}
-
-.textArea {
-  background: transparent;
-  border: none;
-  color: rgb(40, 40, 40);
 }

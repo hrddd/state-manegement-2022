@@ -1,8 +1,7 @@
 .root {
-  border: 1px solid rgb(var(--foreground-rgb));
-  padding: 16px;
+  position: relative;
 }
 
-.row:not(:first-child) {
-  margin-top: 16px;
+.postItPosition {
+  position: absolute;
 }

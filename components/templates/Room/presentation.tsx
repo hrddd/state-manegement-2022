@@ -15,7 +15,7 @@ const Presentation: FC<Props> = ({ id, postIts, members }) => {
     <div className={styles.root}>
       {postIts.map((postit) => {
         return (
-          <div key={postit.id}>
+          <div key={postit.id} className={styles.postItPosition}>
             <PostIt data={postit} />
           </div>
         )
