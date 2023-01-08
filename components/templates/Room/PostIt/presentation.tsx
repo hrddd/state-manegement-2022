@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { FC, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { FC, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { z } from 'zod'
 import { THEME_IDS } from '../../../../resources/PostIt/constants'
@@ -43,14 +43,21 @@ const Presentation: FC<Props> = ({
   data: { text: defaultText, themeId: defaultTheme, ...defaultData },
   onSubmit,
 }) => {
-  const { register, handleSubmit, control, getValues } = useForm<PostItUpdateInput>({
-    resolver: zodResolver(schema),
-    mode: 'onChange',
-    defaultValues: {
+  const defaultValues = useMemo(
+    () => ({
       text: defaultText,
       themeId: defaultTheme.toString(),
-    },
+    }),
+    [defaultText, defaultTheme],
+  )
+  const { register, handleSubmit, control, reset } = useForm<PostItUpdateInput>({
+    resolver: zodResolver(schema),
+    mode: 'onChange',
+    defaultValues,
   })
+  useEffect(() => {
+    reset(defaultValues)
+  }, [defaultValues, reset])
 
   const mySubmit = (resolvedInput: unknown) => {
     const output = resolvedInput as PostItUpdateOutput
@@ -60,9 +67,13 @@ const Presentation: FC<Props> = ({
     })
   }
 
+  // textarea
+  const myInput = useWatch({ control })
   const mySubmitOnResize = useCallback(
     (width: number, height: number) => {
-      const { text, themeId } = getValues() as unknown as PostItUpdateOutput
+      const prevSize = defaultData.size
+      if (prevSize.width === width || prevSize.height === height) return
+      const { text, themeId } = schema.parse(myInput)
       onSubmit({
         text,
         themeId,
@@ -73,9 +84,8 @@ const Presentation: FC<Props> = ({
         },
       })
     },
-    [defaultData, getValues, onSubmit],
+    [defaultData, myInput, onSubmit],
   )
-
   const { ref, ...registerResultOfTextArea } = register('text')
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null)
   useLayoutEffect(() => {
@@ -92,14 +102,6 @@ const Presentation: FC<Props> = ({
       resizeObserver.unobserve(target)
     }
   }, [mySubmitOnResize, textAreaRef])
-
-  const myInput = useWatch({ control })
-
-  const [myOutput, setMyOutput] = useState<PostItUpdateOutput | null>(null)
-  useEffect(() => {
-    if (!schema.safeParse(myInput).success) return
-    setMyOutput(schema.parse(myInput))
-  }, [myInput])
 
   return (
     <div className={styles.root} data-theme-id={defaultTheme}>
