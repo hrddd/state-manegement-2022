@@ -1,7 +1,7 @@
 export type User = {
   name: string
   age: number
-  icon: string
+  icon: string | null
   type: 'user' | 'developer'
 }
 
