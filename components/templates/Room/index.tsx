@@ -2,10 +2,14 @@ import { FC } from 'react'
 import Centering from '../../layout/Centering'
 import Container from './container'
 
-const Room: FC = () => {
+type Props = {
+  roomId: number
+}
+
+const Room: FC<Props> = ({ roomId }) => {
   return (
     <Centering>
-      <Container />
+      <Container roomId={roomId} />
     </Centering>
   )
 }

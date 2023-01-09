@@ -48,8 +48,15 @@ const roomData: Room = {
   ],
 }
 
-const Container: FC = () => {
-  const [dummyUpdatedData, setDummyUpdatedData] = useState(roomData)
+type Props = {
+  roomId: number
+}
+
+const Container: FC<Props> = ({ roomId }) => {
+  const [dummyUpdatedData, setDummyUpdatedData] = useState({
+    ...roomData,
+    id: roomId,
+  })
   const onPostItMove = (next: { id: number; position: { x: number; y: number } }) => {
     const newPostIts = dummyUpdatedData.postIts.map((prev) => {
       if (prev.id !== next.id) return prev
@@ -66,6 +73,7 @@ const Container: FC = () => {
       postIts: newPostIts,
     })
   }
+  console.log(dummyUpdatedData)
   return <Presentation {...dummyUpdatedData} onPostItMove={onPostItMove} />
 }
 

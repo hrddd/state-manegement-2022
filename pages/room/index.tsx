@@ -1,10 +1,14 @@
 import { Inter } from '@next/font/google'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
+import { z } from 'zod'
 import Room from '../../components/templates/Room'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function RoomPage() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function RoomPage({ roomId }: Props) {
   return (
     <>
       <Head>
@@ -13,7 +17,30 @@ export default function RoomPage() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Room />
+      <Room roomId={roomId} />
     </>
   )
+}
+
+const propsScheme = z.object({
+  roomId: z
+    .string()
+    .refine((v) => {
+      return !isNaN(parseInt(v, 10))
+    }, 'roomId must be number')
+    .transform((themeId) => {
+      return parseInt(themeId, 10)
+    }),
+})
+
+type PropSchemeOutput = z.infer<typeof propsScheme>
+
+export const getServerSideProps: GetServerSideProps<PropSchemeOutput> = async ({ query }) => {
+  const props = propsScheme.parse({
+    roomId: query.roomId,
+  })
+
+  return {
+    props,
+  }
 }
