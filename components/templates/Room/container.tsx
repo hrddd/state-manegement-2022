@@ -73,8 +73,37 @@ const Container: FC<Props> = ({ roomId }) => {
       postIts: newPostIts,
     })
   }
-  console.log(dummyUpdatedData)
-  return <Presentation {...dummyUpdatedData} onPostItMove={onPostItMove} />
+  const onClickPostItCreate = () => {
+    setDummyUpdatedData({
+      ...dummyUpdatedData,
+      postIts: [
+        ...dummyUpdatedData.postIts,
+        {
+          id: dummyUpdatedData.postIts.length,
+          text: '',
+          themeId: 2,
+          position: {
+            x: 0,
+            y: 0,
+            z: dummyUpdatedData.postIts.length - 1,
+          },
+          size: {
+            width: 200,
+            height: 200,
+          },
+          user: _user1,
+          lastUpdate: '2023-01-01T12:00',
+        },
+      ],
+    })
+  }
+  return (
+    <Presentation
+      {...dummyUpdatedData}
+      onPostItMove={onPostItMove}
+      onClickPostItCreate={onClickPostItCreate}
+    />
+  )
 }
 
 export default Container
