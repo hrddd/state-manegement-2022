@@ -143,6 +143,7 @@ const Presentation: FC<Props> = ({
             className={styles.colorRadio}
           />
         </div>
+        <div className={styles.user}>{defaultData.user.name}</div>
       </form>
     </div>
   )

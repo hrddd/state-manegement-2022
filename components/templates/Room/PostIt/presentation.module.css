@@ -3,6 +3,7 @@
   padding: 16px;
   border-radius: 16px;
   display: inline-flex;
+  position: relative;
 }
 
 .root[data-theme-id='0'] {
@@ -44,4 +45,10 @@
 
 .colorRadio[data-theme-id='2'] {
   accent-color: rgb(255, 200, 255);
+}
+
+.user {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
