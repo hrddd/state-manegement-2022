@@ -13,18 +13,6 @@ type Props = Room & {
   onPostItMove: (props: { id: number; position: { x: number; y: number } }) => void
 }
 
-const postItIdPrefix = 'postit_' as const
-const encodePostItIdSchema = z
-  .number()
-  .transform((id) => `${postItIdPrefix}${id}` as `${typeof postItIdPrefix}${number}`)
-type PostItId = z.infer<typeof encodePostItIdSchema>
-const decodePostItIdSchema = z
-  .custom<PostItId>()
-  .refine((postItId) => !Number.isNaN(parseInt(postItId.replace(postItIdPrefix, ''), 10)), {
-    message: 'isNan',
-  })
-  .transform((postItId) => parseInt(postItId.replace(postItIdPrefix, ''), 10))
-
 const Presentation: FC<Props> = ({ id, postIts, members, onPostItMove, onClickPostItCreate }) => {
   const draggingInfo = useRef<{
     id: number
@@ -52,7 +40,6 @@ const Presentation: FC<Props> = ({ id, postIts, members, onPostItMove, onClickPo
         {postIts.map((postIt) => {
           return (
             <div
-              id={encodePostItIdSchema.parse(postIt.id)}
               key={postIt.id}
               className={styles.postItPosition}
               style={{
