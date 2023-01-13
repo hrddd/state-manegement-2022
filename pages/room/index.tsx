@@ -1,12 +1,27 @@
 import { Inter } from '@next/font/google'
+import { createWSClient, createTRPCProxyClient, wsLink } from '@trpc/client'
+
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 import { z } from 'zod'
 import Room from '../../components/templates/Room'
-
+import { AppRouter } from '../../server/ws/routers/_app'
 const inter = Inter({ subsets: ['latin'] })
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+// create persistent WebSocket connection
+const wsClient = createWSClient({
+  url: `ws://localhost:3001`,
+})
+// configure TRPCClient to use WebSockets transport
+const client = createTRPCProxyClient<AppRouter>({
+  links: [
+    wsLink({
+      client: wsClient,
+    }),
+  ],
+})
 
 export default function RoomPage({ roomId }: Props) {
   return (
