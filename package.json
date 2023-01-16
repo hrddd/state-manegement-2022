@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:wss": "cross-env PORT=3001 tsx watch src/server/wssDevServer.ts --tsconfig tsconfig.server.json ",
+    "dev:wss": "cross-env PORT=3001 tsx watch server/ws/devServer.ts --tsconfig tsconfig.server.json ",
     "dev:next": "next dev",
     "dev": "run-p dev:*",
     "build": "next build",
@@ -15,7 +15,10 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
     "@next/font": "13.1.1",
+    "@tanstack/react-query": "^4.22.0",
     "@trpc/client": "^10.9.0",
+    "@trpc/next": "^10.9.0",
+    "@trpc/react-query": "^10.9.0",
     "@trpc/server": "^10.9.0",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
@@ -31,6 +34,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.5",
     "superjson": "^1.12.1",
+    "tsx": "^3.12.2",
     "typescript": "4.9.4",
     "ws": "^8.12.0",
     "zod": "^3.20.2"

@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { Room } from '../../../resources/Room/type'
+import { trpc } from '../../../utils/trpc'
 import Presentation from './presentation'
 
 const _user1 = {
@@ -97,11 +98,19 @@ const Container: FC<Props> = ({ roomId }) => {
       ],
     })
   }
+  const [num, setNumber] = useState<number>()
+  trpc.randomNumber.useSubscription(undefined, {
+    onData(n) {
+      setNumber(n)
+    },
+  })
+
   return (
     <Presentation
       {...dummyUpdatedData}
       onPostItMove={onPostItMove}
       onClickPostItCreate={onClickPostItCreate}
+      num={num}
     />
   )
 }

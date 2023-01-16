@@ -11,9 +11,17 @@ import styles from './presentation.module.css'
 type Props = Room & {
   onClickPostItCreate: (props: React.MouseEvent<HTMLButtonElement>) => void
   onPostItMove: (props: { id: number; position: { x: number; y: number } }) => void
+  num: number
 }
 
-const Presentation: FC<Props> = ({ id, postIts, members, onPostItMove, onClickPostItCreate }) => {
+const Presentation: FC<Props> = ({
+  id,
+  postIts,
+  members,
+  onPostItMove,
+  onClickPostItCreate,
+  num,
+}) => {
   const draggingInfo = useRef<{
     id: number
     startX: number
@@ -65,6 +73,7 @@ const Presentation: FC<Props> = ({ id, postIts, members, onPostItMove, onClickPo
         <button type='button' onClick={onClickPostItCreate}>
           付箋を追加する
         </button>
+        web-socket-resp{num}
       </div>
     </div>
   )
