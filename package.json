@@ -5,7 +5,6 @@
   "scripts": {
     "dev:wss": "cross-env PORT=3001 tsx watch server/ws/devServer.ts --tsconfig tsconfig.server.json ",
     "dev:next": "next dev",
-    "dev:next+graphql": "node server/server.mjs",
     "dev": "run-p dev:*",
     "build": "next build",
     "start": "next start",
@@ -14,7 +13,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@apollo/server": "^4.3.0",
     "@hookform/resolvers": "^2.9.10",
     "@next/font": "13.1.1",
     "@reduxjs/toolkit": "^1.9.1",
