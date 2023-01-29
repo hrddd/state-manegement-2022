@@ -1,3 +1,3 @@
-import { app } from '../../server/routers/app'
+import { app } from '../../server/restClients/app'
 
 export default app

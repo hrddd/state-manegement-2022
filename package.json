@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:wss": "cross-env PORT=3001 tsx watch server/ws/devServer.ts --tsconfig tsconfig.server.json ",
+    "dev:wss": "tsx watch __mock__/rest/startRestMockServer.ts --tsconfig tsconfig.server.json ",
     "dev:next": "next dev",
     "dev": "run-p dev:*",
     "build": "next build",
