@@ -25,7 +25,11 @@ const Container: FC<Props> = ({ roomId }) => {
     ...roomData,
     id: roomId,
   })
-  const onPostItMove = (next: { id: number; position: { x: number; y: number } }) => {
+  const onPostItMove = async (next: { id: number; position: { x: number; y: number } }) => {
+    // for debug
+    const data = await trpcClient.postIt.query()
+    console.log(data)
+
     const newPostIts = dummyUpdatedData.postIts.map((prev) => {
       if (prev.id !== next.id) return prev
       return {

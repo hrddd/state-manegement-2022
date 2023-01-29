@@ -1,3 +1,6 @@
-import { server } from '.'
+import { setupServer } from 'msw/node'
+import { handlers } from '.'
 
-server.listen()
+export const server = setupServer(...handlers)
+
+console.log(server)

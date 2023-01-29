@@ -1,5 +1,15 @@
-import { zodiosNextApp } from '@zodios/express'
-import { helloRouter } from './hello'
+import { Zodios } from '@zodios/core'
+import { z } from 'zod'
+import { postIt } from '../../repository/postIts/type'
 
-export const app = zodiosNextApp()
-app.use('/api', helloRouter)
+console.log(process.env.REST_URL)
+export const restClient = new Zodios(`${process.env.REST_URL}`, [
+  {
+    method: 'get',
+    path: '/postit',
+    alias: 'getPostIt',
+    response: z.object({
+      data: z.array(postIt),
+    }),
+  },
+])
