@@ -1,11 +1,11 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import * as react from '@storybook/react'
 import Presentation from './presentation'
 
 export default {
   component: Presentation,
-} as ComponentMeta<typeof Presentation>
+} as react.ComponentMeta<typeof Presentation>
 
-export const Default: ComponentStoryObj<typeof Presentation> = {
+export const Default: react.ComponentStoryObj<typeof Presentation> = {
   args: {
     data: {
       id: 0,

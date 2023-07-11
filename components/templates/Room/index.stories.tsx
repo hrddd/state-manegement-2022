@@ -1,9 +1,9 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import * as react from '@storybook/react'
 import Room from '.'
 
 export default {
   component: Room,
-} as ComponentMeta<typeof Room>
+} as react.ComponentMeta<typeof Room>
 
 const _user1 = {
   name: 'sample1',
@@ -12,4 +12,4 @@ const _user1 = {
   type: 'user' as const,
 }
 
-export const Default: ComponentStoryObj<typeof Room> = {}
+export const Default: react.ComponentStoryObj<typeof Room> = {}

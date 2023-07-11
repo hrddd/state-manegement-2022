@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Room } from '../../../resources/Room/type'
-import { trpc, trpcClient } from '../../../utils/trpc'
+import { trpcClient } from '../../../utils/trpc'
 import Presentation from './presentation'
 
 const _user1 = {
